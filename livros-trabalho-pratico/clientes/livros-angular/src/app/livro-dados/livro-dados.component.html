@@ -1,0 +1,48 @@
+<main class="container">
+  <h1 class="my-3">Dados do Livro</h1>
+  <form (ngSubmit)="incluir()">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input
+        id="titulo"
+        name="titulo"
+        type="text"
+        class="form-control"
+        [(ngModel)]="livro.titulo"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="resumo" class="form-label">Resumo</label>
+      <textarea
+        id="resumo"
+        name="resumo"
+        class="form-control"
+        [(ngModel)]="livro.resumo"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="editora" class="form-label">Editora</label>
+      <select
+        id="editora"
+        name="editora"
+        class="form-select"
+        [(ngModel)]="livro.codEditora"
+      >
+        @for (editora of editoras; track editora.codEditora) {
+          <option [ngValue]="editora.codEditora">{{ editora.nome }}</option>
+        }
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="autores" class="form-label">Autores (um por linha)</label>
+      <textarea
+        id="autores"
+        name="autores"
+        class="form-control"
+        [(ngModel)]="autoresForm"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Dados</button>
+  </form>
+</main>

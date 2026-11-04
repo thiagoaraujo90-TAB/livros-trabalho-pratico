@@ -1,0 +1,36 @@
+<main class="container">
+  <h1 class="my-3">Catálogo de Livros</h1>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Título</th>
+        <th>Resumo</th>
+        <th>Editora</th>
+        <th>Autores</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (livro of livros; track livro.codigo) {
+        <tr>
+          <td>
+            {{ livro.titulo }}
+            <div>
+              <button class="btn btn-danger btn-sm mt-2" (click)="excluir(livro.codigo)">
+                Excluir
+              </button>
+            </div>
+          </td>
+          <td>{{ livro.resumo }}</td>
+          <td>{{ obterNome(livro.codEditora) }}</td>
+          <td>
+            <ul>
+              @for (autor of livro.autores; track $index) {
+                <li>{{ autor }}</li>
+              }
+            </ul>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</main>
